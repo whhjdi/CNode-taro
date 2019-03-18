@@ -1,11 +1,11 @@
 import { ComponentClass } from "react";
 import Taro, { Component, Config } from "@tarojs/taro";
-import { View, Image, Button, Text } from "@tarojs/components";
+import { View, Image, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import { showMenu, hideMenu, changeMenu } from "../../actions/menu";
-
-import { AtDrawer } from "taro-ui";
+import { AtIcon, AtDrawer } from "taro-ui";
 import "./menu.scss";
+
 type PageStateProps = {
   menuData: object;
   currentMenu: { key: string; value: string };
@@ -65,18 +65,25 @@ class Menu extends Component {
     let items = this.handleItems(this.props.menuData);
     return (
       <View className="menu-wrapper">
-        <Image
+        {/* <Image
           src={require("../../assets/images/menu.png")}
           className="menu-list"
+          onClick={this.onShow.bind(this)}
+        /> */}
+        <AtIcon
+          value="menu"
+          size="23"
+          color="#000"
           onClick={this.onShow.bind(this)}
         />
         <Text>
           {this.props.currentMenu.value ? this.props.currentMenu.value : ""}
         </Text>
-        <Image
+        {/* <Image
           src={require("../../assets/images/user.png")}
           className="menu-user"
-        />
+        /> */}
+        <AtIcon value="user" size="23" color="#000" />
         <AtDrawer
           show={this.props.showDrawer}
           left
