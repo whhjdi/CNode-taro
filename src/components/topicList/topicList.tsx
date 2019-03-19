@@ -1,9 +1,10 @@
 import "./topicList.scss";
 import { ComponentClass } from "react";
 import Taro, { Component, Config, stopRecord } from "@tarojs/taro";
-import { View, Image, Button, Text } from "@tarojs/components";
+import { View, ScrollView, Image, Button, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import { getTopicList } from "../../actions/topicList";
+import TopicItem from "../topicItem/topicItem";
 
 type PageStateProps = {
   page: number;
@@ -42,8 +43,13 @@ class TopicList extends Component {
     getTopicList({ page, limit, tab: currentMenu.key });
   }
   render() {
+    let { list } = this.props;
     return (
-      <View className="topicList-wrapper">{this.props.currentMenu.value}</View>
+      <ScrollView className="topicList-wrapper" style={{ height: "650PX" }}>
+        {list.map((item: any) => (
+          <TopicItem item={item} taroKey={item.id} />
+        ))}
+      </ScrollView>
     );
   }
 }
