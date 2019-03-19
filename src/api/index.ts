@@ -2,7 +2,7 @@ const baseUrl: string = "https://cnodejs.org/api/v1";
 
 const api = {
   topics: "/topics", //主题首页 get
-  topic: "topic", //主题详情：id  get
+  topic: "/topic", //主题详情：id  get
   topicCollect: "/topics_collect/collect", //收藏主题 post
   topicDeCollect: "/topics_collect/de_collect", //取消收藏主题 post
   userCollect: "/topic_collect", //用户收藏 :loginName get

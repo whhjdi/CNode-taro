@@ -4,7 +4,7 @@ import Taro, { Component, Config, stopRecord } from "@tarojs/taro";
 import { View, Image, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 // import {} from "../../actions/topicList";`
-import formatDate from "../../utils/date";
+import { formatDate } from "../../utils/date";
 
 type PageStateProps = {
   list: [];
@@ -12,6 +12,10 @@ type PageStateProps = {
     author: { loginname: string; avatar_url: string };
     tab: string;
     title: string;
+    create_at: string;
+    reply_count: string;
+    visit_count: string;
+    top: boolean;
   };
 };
 
@@ -32,24 +36,34 @@ interface TopicItem {
   dispatch => ({})
 )
 class TopicItem extends Component {
+  pushDetail(item) {
+    Taro.navigateTo({ url: "/pages/detail/index?topicid=" + item.id });
+  }
   render() {
     let { item } = this.props;
     return (
-      <View className="topic-item">
+      <View className="topic-item" onClick={this.pushDetail.bind(this, item)}>
         <View className="topic-left">
           <Image src={item.author.avatar_url} className="avatar-img" />
         </View>
         <View className="topic-right">
           <View className="right-title">
-            <Text className="right-tab">{item.tab}</Text>
+            {item.top ? (
+              <Text className="right-tab">置顶</Text>
+            ) : item.tab === "share" ? (
+              <Text className="right-tab right-share">分享</Text>
+            ) : (
+              <Text className="right-tab right-ask">问答</Text>
+            )}
+
             <Text className="topic-title">{item.title}</Text>
           </View>
           <View className="right-info">
             <Text className="loginname">{item.author.loginname}</Text>
-            <Text className="loginname">
+            <Text className="count">
               {item.reply_count} / {item.visit_count}
             </Text>
-            <Text className="loginname">{item.create_at}</Text>
+            <Text className="create-at">{formatDate(item.create_at)}</Text>
           </View>
         </View>
       </View>

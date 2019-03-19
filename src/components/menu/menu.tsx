@@ -15,7 +15,7 @@ type PageStateProps = {
 type PageDispatchProps = {
   showMenu: () => void;
   hideMenu: () => void;
-  changeMenu: (currentMenu: string) => void;
+  changeMenu: (currentMenu: object) => void;
 };
 
 type PageOwnProps = {};
@@ -37,9 +37,7 @@ interface Menu {
     hideMenu() {
       dispatch(hideMenu());
     },
-    changeMenu(currentMenu: string) {
-      console.log(currentMenu);
-
+    changeMenu(currentMenu) {
       dispatch(changeMenu(currentMenu));
     }
   })
@@ -59,6 +57,7 @@ class Menu extends Component {
   changeItem(index: number) {
     let { menuData } = this.props;
     let currentMenu = menuData[index];
+    if (this.props.currentMenu.value === currentMenu.value) return;
     this.props.changeMenu && this.props.changeMenu(currentMenu);
   }
   render() {

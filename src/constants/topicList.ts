@@ -1,1 +1,2 @@
 export const GET_TOPICLIST = "GET_TOPICLIST ";
+export const ADD_TOPICLIST = "ADD_TOPICLIST";

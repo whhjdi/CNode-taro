@@ -3,7 +3,7 @@ import { ComponentClass } from "react";
 import Taro, { Component, Config, stopRecord } from "@tarojs/taro";
 import { View, ScrollView, Image, Button, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
-import { getTopicList } from "../../actions/topicList";
+import { getTopicList, getNextList } from "../../actions/topicList";
 import TopicItem from "../topicItem/topicItem";
 
 type PageStateProps = {
@@ -15,6 +15,7 @@ type PageStateProps = {
 
 type PageDispatchProps = {
   getTopicList: (params: object) => void;
+  getNextList: (params: object) => void;
 };
 
 type PageOwnProps = {};
@@ -32,20 +33,30 @@ interface TopicList {
   dispatch => ({
     getTopicList(params) {
       dispatch(getTopicList(params));
+    },
+    getNextList(params) {
+      dispatch(getNextList(params));
     }
   })
 )
 class TopicList extends Component {
   componentDidMount() {
     let { page, limit, getTopicList, currentMenu } = this.props;
-    console.log(page, limit);
-
     getTopicList({ page, limit, tab: currentMenu.key });
+  }
+  handleToLower() {
+    let { page, limit, getNextList, currentMenu } = this.props;
+    getNextList({ page: page + 1, limit, tab: currentMenu.key });
   }
   render() {
     let { list } = this.props;
     return (
-      <ScrollView className="topicList-wrapper" style={{ height: "650PX" }}>
+      <ScrollView
+        className="topicList-wrapper"
+        onScrollToLower={this.handleToLower.bind(this)}
+        scrollY={true}
+        style="height:100vh;"
+      >
         {list.map((item: any) => (
           <TopicItem item={item} taroKey={item.id} />
         ))}

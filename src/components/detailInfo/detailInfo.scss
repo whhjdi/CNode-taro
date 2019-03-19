@@ -1,37 +1,20 @@
-.topic-item {
+.detailInfo {
+  font-size: 24px;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
+  width: 100%;
 
-  .topic-left {
-    width: 80px;
-    margin-right: 20px;
-
-    .avatar-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 4px;
-    }
-  }
-
-
-  .topic-right {
+  .detail-header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    flex: 1;
+    margin-bottom: 20PX;
+    font-size: 32px;
+    padding: 10px 20px;
 
-    .right-title {
-      display: flex;
 
-      .topic-title {
-        font-size: 30px;
-        color: #2e3c5d;
-      }
-
+    .detail-header-title {
       .right-tab {
         background: #e74c3c;
         font-size: 20px;
@@ -54,17 +37,14 @@
       }
     }
 
-    .right-info {
+    .detail-header-desc {
       font-size: 24px;
       color: #bdc3c7;
-
-      .loginname {
-        margin-right: 20px;
-      }
-
-      .count {
-        margin-right: 20px;
-      }
     }
+  }
+
+  .detail-body {
+    font-size: 28px;
+    padding: 10px 20px;
   }
 }
