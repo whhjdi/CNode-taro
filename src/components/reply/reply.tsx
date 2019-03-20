@@ -48,12 +48,14 @@ class Reply extends Component {
                   <RichText nodes={item.content} />
                 </View>
                 <View className="star">
-                  {item.ups.length ? item.ups.length : 0}
                   <AtIcon
                     value={item.is_uped ? "star-2" : "star"}
-                    size="20"
-                    color="#F00"
+                    size="16"
+                    color="#e67e22"
                   />
+                  <Text className="star-text">
+                    {item.ups.length ? item.ups.length : 0}
+                  </Text>
                 </View>
               </View>
             </View>

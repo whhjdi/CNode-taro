@@ -1,11 +1,10 @@
 import { ComponentClass } from "react";
-import Taro, { Component, Config } from "@tarojs/taro";
-import { View, Button, Text } from "@tarojs/components";
+import Taro, { Component, Config, setNavigationBarColor } from "@tarojs/taro";
+import { View, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
-import { getDetail } from "../../actions/detail";
 import "./index.scss";
-import DetailInfo from "../../components/detailInfo/detailInfo";
-import Reply from "../../components/reply/reply";
+import { userInfo } from "../../actions/user";
+
 // #region 书写注意
 //
 // 目前 typescript 版本还无法在装饰器模式下将 Props 注入到 Taro.Component 中的 props 属性
@@ -17,15 +16,11 @@ import Reply from "../../components/reply/reply";
 // #endregion
 
 type PageStateProps = {
-  detailInfo: {
-    id: string;
-  };
-  replies: Array<any>;
   user: { [propName: string]: any };
 };
 
 type PageDispatchProps = {
-  getDetail: (id: string, token: string) => void;
+  userInfo: (userName: string) => void;
 };
 
 type PageOwnProps = {};
@@ -34,23 +29,19 @@ type PageState = {};
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
-interface Detail {
+interface User {
   props: IProps;
 }
 
 @connect(
-  store => ({
-    detailInfo: store.detail.detailInfo,
-    replies: store.detail.replies,
-    user: store.user
-  }),
+  store => ({ user: store.user }),
   dispatch => ({
-    getDetail(id, token) {
-      dispatch(getDetail(id, token));
+    userInfo(token) {
+      dispatch(userInfo(token));
     }
   })
 )
-class Detail extends Component {
+class User extends Component {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -59,30 +50,12 @@ class Detail extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: "详情"
+    navigationBarTitleText: "个人中心",
+    navigationBarBackgroundColor: "#5685E4"
   };
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
-  }
-  componentDidMount() {
-    let id = this.$router.params.topicid;
-    this.handleDetail(id);
-  }
-  handleDetail(id) {
-    console.log(this.props.user.accessToken);
-
-    this.props.getDetail(id, this.props.user.accessToken);
-  }
-
   render() {
-    let { detailInfo, replies } = this.props;
-    return (
-      <View className="detail">
-        <DetailInfo detailInfo={detailInfo} />
-        <Reply replies={replies} />
-      </View>
-    );
+    return <View>1</View>;
   }
 }
 
@@ -93,4 +66,4 @@ class Detail extends Component {
 //
 // #endregion
 
-export default Detail as ComponentClass<PageOwnProps, PageState>;
+export default User as ComponentClass<PageOwnProps, PageState>;

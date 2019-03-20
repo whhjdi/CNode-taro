@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/11.7.0/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js add ~taro-ui/dist/style/components/list.scss --silent --no-progress
+  /usr/local/Cellar/node/11.7.0/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js add src/actions/user --silent --no-progress
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/muxue/Desktop/learn-taro/node_modules/.bin:/var/folders/m3/9ffnv8rn1gbgfdgfjtv9y3_40000gn/T/yarn--1552884615321-0.23674106959255936:/Users/muxue/Desktop/learn-taro/node_modules/.bin:/Users/muxue/.config/yarn/link/node_modules/.bin:/Users/muxue/Desktop/learn-taro/node_modules/.bin:/Users/muxue/.config/yarn/link/node_modules/.bin:/usr/local/Cellar/node/11.7.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/11.7.0/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/11.7.0/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/11.7.0/bin:/Users/muxue/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/node/11.7.0/bin:/Users/muxue/flutter/bin:/usr/local/mongodb/bin:/Users/muxue/Library/Android/sdk/emulator:/Users/muxue/Library/Android/sdk/tools:/Users/muxue/Library/Android/sdk/tools/bin:/Users/muxue/Library/Android/sdk/platform-tools:/usr/local/mongodb/bin:/Users/muxue/Library/Android/sdk/emulator:/Users/muxue/Library/Android/sdk/tools:/Users/muxue/Library/Android/sdk/tools/bin:/Users/muxue/Library/Android/sdk/platform-tools
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/muxue/Desktop/learn-taro/node_modules/.bin:/var/folders/m3/9ffnv8rn1gbgfdgfjtv9y3_40000gn/T/yarn--1553055481737-0.10940818755345072:/Users/muxue/Desktop/learn-taro/node_modules/.bin:/Users/muxue/.config/yarn/link/node_modules/.bin:/Users/muxue/Desktop/learn-taro/node_modules/.bin:/Users/muxue/.config/yarn/link/node_modules/.bin:/usr/local/Cellar/node/11.7.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/11.7.0/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/11.7.0/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/11.7.0/bin:/Users/muxue/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/node/11.7.0/bin:/Users/muxue/flutter/bin:/usr/local/mongodb/bin:/Users/muxue/Library/Android/sdk/emulator:/Users/muxue/Library/Android/sdk/tools:/Users/muxue/Library/Android/sdk/tools/bin:/Users/muxue/Library/Android/sdk/platform-tools:/usr/local/mongodb/bin:/Users/muxue/Library/Android/sdk/emulator:/Users/muxue/Library/Android/sdk/tools:/Users/muxue/Library/Android/sdk/tools/bin:/Users/muxue/Library/Android/sdk/platform-tools
 
 Yarn version: 
   1.13.0
@@ -14,15 +14,15 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/~taro-ui%2fdist/style/components/list.scss: not_found
-      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:66255:18)
+  Error: https://registry.npm.taobao.org/src%2factions/user: Request "https://registry.npm.taobao.org/src%2factions/user" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:66264:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:129397:22)
       at Request.emit (events.js:188:13)
       at Request.<anonymous> (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:130369:10)
       at Request.emit (events.js:188:13)
-      at Gunzip.<anonymous> (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:130291:12)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:130291:12)
       at Object.onceWrapper (events.js:276:13)
-      at Gunzip.emit (events.js:193:15)
+      at IncomingMessage.emit (events.js:193:15)
       at endReadableNT (_stream_readable.js:1129:12)
       at processTicksAndRejections (internal/process/next_tick.js:76:17)
 

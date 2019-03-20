@@ -8,8 +8,7 @@ export default async function request(
   return new Promise((resolve, reject) => {
     Taro.request({ url, method, data })
       .then(res => {
-        console.log(res, 1);
-        resolve(res.data);
+        resolve(res);
       })
       .catch(err => {
         reject(err);

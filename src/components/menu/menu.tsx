@@ -60,11 +60,19 @@ class Menu extends Component {
     if (this.props.currentMenu.value === currentMenu.value) return;
     this.props.changeMenu && this.props.changeMenu(currentMenu);
   }
+  toLogin() {
+    Taro.navigateTo({ url: "/pages/login/index" });
+  }
   render() {
     let items = this.handleItems(this.props.menuData);
     return (
       <View className="menu-wrapper">
-        <AtIcon value="user" size="23" color="#000" />
+        <AtIcon
+          value="user"
+          size="23"
+          color="#000"
+          onClick={this.toLogin.bind(this)}
+        />
         <Text>
           {this.props.currentMenu.value ? this.props.currentMenu.value : ""}
         </Text>

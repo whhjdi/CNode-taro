@@ -11,7 +11,7 @@ export const _getDetail = res => {
 export const getDetail = (id, token) => async dispatch => {
   try {
     let res = await fetchData.getTopicDetail(id, token);
-    dispatch(_getDetail(res.data));
+    dispatch(_getDetail(res.data.data));
   } catch (err) {
     console.log(err);
   }

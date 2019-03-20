@@ -6,7 +6,14 @@ class fetchData {
     return request(api.topics, "GET", params);
   }
   static getTopicDetail(id, accessToken) {
-    return request(api.topic + "/" + id, "GET", { accesstoken: accessToken });
+    let accesstoken = accessToken ? accessToken : null;
+    return request(api.topic + "/" + id, "GET", { accesstoken });
+  }
+  static userLogin(accesstoken) {
+    return request(api.accessToken, "POST", { accesstoken });
+  }
+  static getUserInfo(userName) {
+    return request(api.userInfo + "/" + userName, "GET");
   }
 }
 

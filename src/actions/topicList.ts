@@ -5,7 +5,7 @@ import { GET_TOPICLIST, ADD_TOPICLIST } from "../constants/topicList";
 export const getTopicList = params => async dispatch => {
   try {
     let res = await fetchData.getTopicList(params);
-    dispatch(_getTopicList(res.data));
+    dispatch(_getTopicList(res.data.data));
   } catch (err) {
     console.log(err);
   }
@@ -17,7 +17,7 @@ export const getNextList = params => async dispatch => {
   try {
     let res = await fetchData.getTopicList(params);
     if (res.data.length > 0) {
-      dispatch(_getNextList(res.data, params.page + 1));
+      dispatch(_getNextList(res.data.data, params.page + 1));
     }
   } catch (err) {
     console.log(err);
