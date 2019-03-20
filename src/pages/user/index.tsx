@@ -1,6 +1,6 @@
 import { ComponentClass } from "react";
 import Taro, { Component, Config, setNavigationBarColor } from "@tarojs/taro";
-import { View, Text } from "@tarojs/components";
+import { View, Text, Image } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import "./index.scss";
 import { userInfo } from "../../actions/user";
@@ -16,7 +16,8 @@ import { userInfo } from "../../actions/user";
 // #endregion
 
 type PageStateProps = {
-  user: { [propName: string]: any };
+  userData: { [propName: string]: any };
+  loginName: string;
 };
 
 type PageDispatchProps = {
@@ -34,10 +35,10 @@ interface User {
 }
 
 @connect(
-  store => ({ user: store.user }),
+  store => ({ userData: store.user.userData, loginName: store.user.loginName }),
   dispatch => ({
-    userInfo(token) {
-      dispatch(userInfo(token));
+    userInfo(userName) {
+      dispatch(userInfo(userName));
     }
   })
 )
@@ -53,9 +54,25 @@ class User extends Component {
     navigationBarTitleText: "个人中心",
     navigationBarBackgroundColor: "#5685E4"
   };
-
+  componentDidMount() {
+    this.handleUserInfo();
+  }
+  handleUserInfo() {
+    let { loginName, userInfo } = this.props;
+    if (loginName) {
+      userInfo(loginName);
+    }
+  }
   render() {
-    return <View>1</View>;
+    let { avatar_url, loginname } = this.props.userData;
+    return (
+      <View className="user">
+        <View className="info">
+          <Image src={avatar_url} className="avatar" />
+          <Text className="name">{loginname}</Text>
+        </View>
+      </View>
+    );
   }
 }
 

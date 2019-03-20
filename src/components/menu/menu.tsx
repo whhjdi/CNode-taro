@@ -1,5 +1,5 @@
 import { ComponentClass } from "react";
-import Taro, { Component, Config } from "@tarojs/taro";
+import Taro, { Component, Config, base64ToArrayBuffer } from "@tarojs/taro";
 import { View, Image, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import { showMenu, hideMenu, changeMenu } from "../../actions/menu";
@@ -7,9 +7,8 @@ import { AtIcon, AtDrawer } from "taro-ui";
 import "./menu.scss";
 
 type PageStateProps = {
-  menuData: object;
-  currentMenu: { key: string; value: string };
-  showDrawer: boolean;
+  menu: { [propName: string]: any };
+  loginName: string;
 };
 
 type PageDispatchProps = {
@@ -29,7 +28,7 @@ interface Menu {
 }
 
 @connect(
-  ({ menu }) => menu,
+  store => ({ menu: store.menu, loginName: store.user.loginName }),
   dispatch => ({
     showMenu() {
       dispatch(showMenu());
@@ -55,16 +54,22 @@ class Menu extends Component {
     });
   }
   changeItem(index: number) {
-    let { menuData } = this.props;
-    let currentMenu = menuData[index];
-    if (this.props.currentMenu.value === currentMenu.value) return;
-    this.props.changeMenu && this.props.changeMenu(currentMenu);
+    let { menuData, currentMenu } = this.props.menu;
+    let currentMenu2 = menuData[index];
+    if (currentMenu.value === currentMenu2.value) return;
+    this.props.changeMenu && this.props.changeMenu(currentMenu2);
   }
   toLogin() {
-    Taro.navigateTo({ url: "/pages/login/index" });
+    if (this.props.loginName) {
+      Taro.navigateTo({ url: "/pages/user/index" });
+    } else {
+      Taro.navigateTo({ url: "/pages/login/index" });
+    }
   }
+
   render() {
-    let items = this.handleItems(this.props.menuData);
+    let { menuData, currentMenu, showDrawer } = this.props.menu;
+    let items = this.handleItems(menuData);
     return (
       <View className="menu-wrapper">
         <AtIcon
@@ -73,9 +78,7 @@ class Menu extends Component {
           color="#000"
           onClick={this.toLogin.bind(this)}
         />
-        <Text>
-          {this.props.currentMenu.value ? this.props.currentMenu.value : ""}
-        </Text>
+        <Text>{currentMenu.value ? currentMenu.value : ""}</Text>
         <AtIcon
           value="menu"
           size="23"
@@ -84,7 +87,7 @@ class Menu extends Component {
         />
         <View style="position:absolute">
           <AtDrawer
-            show={this.props.showDrawer}
+            show={showDrawer}
             right
             mask
             onClose={this.onClose.bind(this)}

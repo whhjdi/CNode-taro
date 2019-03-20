@@ -21,12 +21,14 @@ type PageStateProps = {
 };
 
 type PageDispatchProps = {
-  accessUserToken: (token: string) => void;
+  accessUserToken: (token: string) => any;
 };
 
 type PageOwnProps = {};
 
-type PageState = {};
+type PageState = {
+  token: string;
+};
 
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
@@ -38,7 +40,7 @@ interface Login {
   store => ({ user: store.user }),
   dispatch => ({
     accessUserToken(token) {
-      dispatch(accessUserToken(token));
+      return dispatch(accessUserToken(token));
     }
   })
 )
@@ -62,18 +64,24 @@ class Login extends Component {
       this.setState({ token: e.target.value });
     }
   }
-  handleLogin() {
+  async handleLogin() {
     if (this.state.token) {
-      this.props.accessUserToken(this.state.token);
+      await this.props.accessUserToken(this.state.token);
+      Taro.redirectTo({ url: "/pages/user/index" });
     } else {
       Taro.showToast({ title: "请输入accesstoken" });
     }
   }
   render() {
+    let { loginName } = this.props.user;
     return (
       <View className="login">
         <View className="header">
-          <View className="header-avatar" />
+          {!loginName ? (
+            <View className="header-avatar">快点登录吧1</View>
+          ) : (
+            <View className="header-avatar">{loginName}</View>
+          )}
         </View>
         <View className="input-wrapper">
           <Input
