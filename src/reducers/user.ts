@@ -1,4 +1,9 @@
-import { ACCESSTOKEN, ACCESSTOKENFAILED, GETUSERINFO } from "../constants/user";
+import {
+  ACCESSTOKEN,
+  ACCESSTOKENFAILED,
+  GETUSERINFO,
+  LOGOUT
+} from "../constants/user";
 
 const USER_STATE = {
   accessToken: "",
@@ -18,6 +23,8 @@ export default function user(state = USER_STATE, action) {
       return { ...state, loginName: null, accessToken: null };
     case GETUSERINFO:
       return { ...state, userData: action.userData };
+    case LOGOUT:
+      return { ...state, userData: {}, accessToken: "", loginName: "" };
     default:
       return state;
   }

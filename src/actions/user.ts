@@ -1,6 +1,11 @@
 import Taro from "@tarojs/taro";
 import fetchData from "../api/fetchData";
-import { ACCESSTOKEN, ACCESSTOKENFAILED, GETUSERINFO } from "../constants/user";
+import {
+  ACCESSTOKEN,
+  ACCESSTOKENFAILED,
+  GETUSERINFO,
+  LOGOUT
+} from "../constants/user";
 
 export const accessUserToken = token => async dispatch => {
   console.log(token, 333);
@@ -49,4 +54,10 @@ export const _userInfo = userData => {
 
 export const saveAccessToken = token => {
   Taro.setStorageSync("token", token);
+};
+
+export const userLogout = () => {
+  return {
+    type: LOGOUT
+  };
 };

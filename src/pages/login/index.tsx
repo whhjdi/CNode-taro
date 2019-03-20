@@ -64,14 +64,16 @@ class Login extends Component {
   }
   getToken() {
     Taro.getStorage({ key: "token" }).then(res => {
-      this.setState(
-        {
-          token: res.data
-        },
-        () => {
-          this.handleLogin();
-        }
-      );
+      if (res.data) {
+        this.setState(
+          {
+            token: res.data
+          },
+          () => {
+            this.handleLogin();
+          }
+        );
+      }
     });
   }
   handleInput(e) {

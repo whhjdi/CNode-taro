@@ -3,8 +3,8 @@ import Taro, { Component, Config, setNavigationBarColor } from "@tarojs/taro";
 import { View, Text, Image } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import "./index.scss";
-import { userInfo } from "../../actions/user";
-
+import { userInfo, userLogout } from "../../actions/user";
+import { AtList, AtListItem, AtButton } from "taro-ui";
 // #region 书写注意
 //
 // 目前 typescript 版本还无法在装饰器模式下将 Props 注入到 Taro.Component 中的 props 属性
@@ -22,6 +22,7 @@ type PageStateProps = {
 
 type PageDispatchProps = {
   userInfo: (userName: string) => void;
+  userLogout: () => void;
 };
 
 type PageOwnProps = {};
@@ -39,6 +40,9 @@ interface User {
   dispatch => ({
     userInfo(userName) {
       dispatch(userInfo(userName));
+    },
+    userLogout() {
+      dispatch(userLogout());
     }
   })
 )
@@ -52,7 +56,8 @@ class User extends Component {
    */
   config: Config = {
     navigationBarTitleText: "个人中心",
-    navigationBarBackgroundColor: "#5685E4"
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTextStyle: "black"
   };
   componentDidMount() {
     this.handleUserInfo();
@@ -63,14 +68,52 @@ class User extends Component {
       userInfo(loginName);
     }
   }
+  handleLogout() {
+    Taro.setStorageSync("token", "");
+    this.props.userLogout();
+    Taro.redirectTo({ url: "/pages/index/index" });
+  }
+  handleClick() {}
   render() {
     let { avatar_url, loginname } = this.props.userData;
     return (
       <View className="user">
         <View className="info">
-          <Image src={avatar_url} className="avatar" />
-          <Text className="name">{loginname}</Text>
+          <View className="avatar-wrapper">
+            <Image src={avatar_url ? avatar_url : ""} className="avatar" />
+            <Text className="name">{loginname}</Text>
+          </View>
+          <AtButton
+            type="primary"
+            className="logout"
+            size="small"
+            onClick={this.handleLogout.bind(this)}
+          >
+            退出登录
+          </AtButton>
         </View>
+        <AtList>
+          <AtListItem
+            title="我的消息"
+            arrow="right"
+            onClick={this.handleClick}
+          />
+          <AtListItem
+            title="最近主题"
+            arrow="right"
+            onClick={this.handleClick}
+          />
+          <AtListItem
+            title="最近回复"
+            arrow="right"
+            onClick={this.handleClick}
+          />
+          <AtListItem
+            title="我的收藏"
+            arrow="right"
+            onClick={this.handleClick}
+          />
+        </AtList>
       </View>
     );
   }
