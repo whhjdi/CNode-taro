@@ -59,6 +59,21 @@ class Login extends Component {
   state = {
     token: ""
   };
+  componentDidMount() {
+    this.getToken();
+  }
+  getToken() {
+    Taro.getStorage({ key: "token" }).then(res => {
+      this.setState(
+        {
+          token: res.data
+        },
+        () => {
+          this.handleLogin();
+        }
+      );
+    });
+  }
   handleInput(e) {
     if (e && e.target) {
       this.setState({ token: e.target.value });
