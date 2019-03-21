@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "detail-info": "../../components/detailInfo/detailInfo",
-    "reply": "../../components/reply/reply"
-  },
-  "navigationBarTitleText": "详情"
-}

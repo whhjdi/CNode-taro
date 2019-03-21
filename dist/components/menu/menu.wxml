@@ -1,9 +1,0 @@
-<block>
-    <view class="menu-wrapper">
-        <at-icon value="user" __triggerObserer="{{ _triggerObserer }}" size="23" color="#000" bindonclick="toLogin" __fn_onClick="{{true}}" data-e-onclick-so="this"></at-icon><text>{{currentMenu.value ? currentMenu.value : ""}}</text>
-        <at-icon value="menu" __triggerObserer="{{ _triggerObserer }}" size="23" color="#000" bindonclick="onShow" __fn_onClick="{{true}}" data-e-onclick-so="this"></at-icon>
-        <view style="position:absolute">
-            <at-drawer show="{{showDrawer}}" __triggerObserer="{{ _triggerObserer }}" right="{{true}}" mask="{{true}}" bindonclose="onClose" items="{{items}}" bindonitemclick="changeItem" __fn_onClose="{{true}}" data-e-onclose-so="this" __fn_onItemClick="{{true}}" data-e-onitemclick-so="this"></at-drawer>
-        </view>
-    </view>
-</block>

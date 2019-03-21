@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "at-icon": "../../npm/taro-ui/dist/weapp/components/icon/index",
-    "at-drawer": "../../npm/taro-ui/dist/weapp/components/drawer/index"
-  }
-}

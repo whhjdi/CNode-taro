@@ -1,5 +1,0 @@
-<block>
-    <scroll-view class="topicList-wrapper" bindscrolltolower="handleToLower" scroll-y="{{true}}" style="height:100vh;" data-e-scrolltolower-so="this">
-        <topic-item item="{{item}}" __triggerObserer="{{ _triggerObserer }}" wx:key="id" wx:for="{{list}}" wx:for-item="item" wx:for-index="_anonIdx"></topic-item>
-    </scroll-view>
-</block>

@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "menu": "../../components/menu/menu",
-    "topic-list": "../../components/topicList/topicList"
-  },
-  "navigationBarTitleText": "CNode社区"
-}

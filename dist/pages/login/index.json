@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "at-button": "../../npm/taro-ui/dist/weapp/components/button/index"
-  },
-  "navigationBarTitleText": "登录",
-  "navigationBarBackgroundColor": "#5685E4"
-}
