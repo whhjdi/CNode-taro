@@ -2,7 +2,7 @@
 
 使用 Taro 开发的 CNode 社区 ，支持 h5,微信小程序 等各种小程序，实现一次编码，多端运行
 
-![](https://ws2.sinaimg.cn/large/006tKfTcly1g1agvopvyqj30u00va7wh.jpg)
+![img](https://ws2.sinaimg.cn/large/006tKfTcly1g1agvopvyqj30u00va7wh.jpg)
 
 ## 项目概要
 
