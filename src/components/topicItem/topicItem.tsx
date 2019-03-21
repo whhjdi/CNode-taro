@@ -1,10 +1,9 @@
+import { formatDate } from "../../utils/date";
 import "./topicItem.scss";
 import { ComponentClass } from "react";
 import Taro, { Component, Config, stopRecord } from "@tarojs/taro";
 import { View, Image, Text } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
-// import {} from "../../actions/topicList";`
-import { formatDate } from "../../utils/date";
 
 type PageStateProps = {
   list: [];
@@ -63,7 +62,9 @@ class TopicItem extends Component {
             <Text className="count">
               {item.reply_count} / {item.visit_count}
             </Text>
-            <Text className="create-at">{formatDate(item.create_at)}</Text>
+            <Text className="create-at">
+              {item.create_at ? formatDate(item.create_at) : null}
+            </Text>
           </View>
         </View>
       </View>

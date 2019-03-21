@@ -70,8 +70,6 @@ class Detail extends Component {
     this.handleDetail(id);
   }
   handleDetail(id) {
-    console.log(this.props.user.accessToken);
-
     this.props.getDetail(id, this.props.user.accessToken);
   }
 

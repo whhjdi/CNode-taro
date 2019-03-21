@@ -4,7 +4,8 @@ import { View, Text, Image } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import "./index.scss";
 import { userInfo, userLogout } from "../../actions/user";
-import { AtList, AtListItem, AtButton } from "taro-ui";
+import { AtList, AtListItem, AtButton, AtAccordion } from "taro-ui";
+import ListItem from "../../components/listItem/listItem";
 // #region 书写注意
 //
 // 目前 typescript 版本还无法在装饰器模式下将 Props 注入到 Taro.Component 中的 props 属性
@@ -59,6 +60,7 @@ class User extends Component {
     navigationBarBackgroundColor: "#fff",
     navigationBarTextStyle: "black"
   };
+
   componentDidMount() {
     this.handleUserInfo();
   }
@@ -73,9 +75,13 @@ class User extends Component {
     this.props.userLogout();
     Taro.redirectTo({ url: "/pages/index/index" });
   }
-  handleClick() {}
   render() {
-    let { avatar_url, loginname } = this.props.userData;
+    let {
+      avatar_url,
+      loginname,
+      recent_replies,
+      recent_topics
+    } = this.props.userData;
     return (
       <View className="user">
         <View className="info">
@@ -92,28 +98,10 @@ class User extends Component {
             退出登录
           </AtButton>
         </View>
-        <AtList>
-          <AtListItem
-            title="我的消息"
-            arrow="right"
-            onClick={this.handleClick}
-          />
-          <AtListItem
-            title="最近主题"
-            arrow="right"
-            onClick={this.handleClick}
-          />
-          <AtListItem
-            title="最近回复"
-            arrow="right"
-            onClick={this.handleClick}
-          />
-          <AtListItem
-            title="我的收藏"
-            arrow="right"
-            onClick={this.handleClick}
-          />
-        </AtList>
+        <ListItem data={recent_topics} title="最新主题" />
+        <ListItem data={recent_replies} title="最近回复" />
+        <ListItem data={recent_replies} title="已读消息" />
+        <ListItem data={recent_replies} title="未读消息" />
       </View>
     );
   }

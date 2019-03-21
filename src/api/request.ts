@@ -6,8 +6,10 @@ export default async function request(
   data?: any
 ): Promise<Taro.request.Promised<any>> {
   return new Promise((resolve, reject) => {
+    Taro.showLoading();
     Taro.request({ url, method, data })
       .then(res => {
+        Taro.hideLoading();
         resolve(res);
       })
       .catch(err => {
