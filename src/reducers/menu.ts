@@ -13,7 +13,7 @@ const MENU_STATE = {
     { key: "job", value: "招聘" },
     { key: "dev", value: "客户端测试" }
   ],
-  currentMenu: { key: "all", value: "问答" },
+  currentMenu: { key: "all", value: "全部" },
   showDrawer: false
 };
 

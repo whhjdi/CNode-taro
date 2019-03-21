@@ -97,11 +97,7 @@ class Login extends Component {
     return (
       <View className="login">
         <View className="header">
-          {!loginName ? (
-            <View className="header-avatar">快点登录吧1</View>
-          ) : (
-            <View className="header-avatar">{loginName}</View>
-          )}
+          <View className="header-avatar">快点登录吧</View>
         </View>
         <View className="input-wrapper">
           <Input
@@ -114,13 +110,12 @@ class Login extends Component {
           />
         </View>
         <AtButton
-          loading
           type="primary"
           circle
           className="login-button"
           onClick={this.handleLogin.bind(this)}
         >
-          按钮文案
+          登录
         </AtButton>
       </View>
     );

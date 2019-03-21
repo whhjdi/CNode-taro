@@ -98,8 +98,6 @@ class User extends Component {
       hasReadMsgs,
       notReadMsgs
     } = this.props.userData;
-    console.log(hasReadMsgs);
-
     return (
       <View className="user">
         <View className="info">

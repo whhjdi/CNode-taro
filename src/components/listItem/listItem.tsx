@@ -43,8 +43,6 @@ class ListItem extends Component {
   }
   render() {
     let { data, title } = this.props;
-    console.log(data);
-
     let { open } = this.state;
     return (
       <AtAccordion
