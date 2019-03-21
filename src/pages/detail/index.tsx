@@ -62,9 +62,6 @@ class Detail extends Component {
     navigationBarTitleText: "详情"
   };
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
-  }
   componentDidMount() {
     let id = this.$router.params.topicid;
     this.handleDetail(id);

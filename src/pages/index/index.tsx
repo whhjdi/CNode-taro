@@ -69,10 +69,6 @@ class Index extends Component {
     navigationBarTitleText: "CNode社区"
   };
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
-  }
-
   componentWillUnmount() {}
 
   componentDidShow() {}

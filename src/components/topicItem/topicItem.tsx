@@ -28,6 +28,7 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
 interface TopicItem {
   props: IProps;
+  defaultProps: { [propName: string]: any };
 }
 
 @connect(
@@ -35,6 +36,7 @@ interface TopicItem {
   dispatch => ({})
 )
 class TopicItem extends Component {
+  static defaultProps: { item: any[] };
   pushDetail(item) {
     Taro.navigateTo({ url: "/pages/detail/index?topicid=" + item.id });
   }
@@ -71,5 +73,7 @@ class TopicItem extends Component {
     );
   }
 }
-
+TopicItem.defaultProps = {
+  item: []
+};
 export default TopicItem as ComponentClass<PageOwnProps, PageState>;

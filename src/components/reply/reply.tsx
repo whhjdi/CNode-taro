@@ -32,7 +32,7 @@ class Reply extends Component {
       <View className="reply">
         {replies.map((item, index) => {
           return (
-            <View className="reply-item">
+            <View className="reply-item" taroKey={item.id} key={item.id}>
               <View className="reply-item-img-wrapper">
                 <Image
                   src={item.author.avatar_url}

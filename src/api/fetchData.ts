@@ -13,8 +13,6 @@ class fetchData {
     return request(api.accessToken, "POST", { accesstoken });
   }
   static getUserInfo(userName) {
-    console.log(userName);
-
     return request(api.userInfo + "/" + userName, "GET");
   }
   static fetchMessages(accesstoken) {

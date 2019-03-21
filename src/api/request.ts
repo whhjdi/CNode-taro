@@ -5,8 +5,6 @@ export default async function request(
   method: any,
   data?: any
 ): Promise<Taro.request.Promised<any>> {
-  console.log(data, "data");
-
   return new Promise((resolve, reject) => {
     Taro.showLoading();
     Taro.request({

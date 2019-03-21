@@ -82,7 +82,6 @@ class Login extends Component {
     }
   }
   async handleLogin() {
-    console.log(this.state.token, 1);
     let { token } = this.state;
     if (token) {
       let res = await this.props.accessUserToken(token);
@@ -97,7 +96,6 @@ class Login extends Component {
     }
   }
   render() {
-    let { loginName } = this.props.user;
     return (
       <View className="login">
         <View className="header">

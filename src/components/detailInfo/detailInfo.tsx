@@ -18,6 +18,7 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
 interface DetailInfo {
   props: IProps;
+  defaultProps: { [propName: string]: any };
 }
 
 @connect(
@@ -25,9 +26,7 @@ interface DetailInfo {
   dispatch => ({})
 )
 class DetailInfo extends Component {
-  componentDidMount() {
-    console.log(this.props.detailInfo);
-  }
+  static defaultProps: { detailInfo: {} };
   render() {
     let { detailInfo } = this.props;
     return (
@@ -61,5 +60,7 @@ class DetailInfo extends Component {
     );
   }
 }
-
+DetailInfo.defaultProps = {
+  detailInfo: {}
+};
 export default DetailInfo as ComponentClass<PageOwnProps, PageState>;
