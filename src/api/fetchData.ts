@@ -6,7 +6,7 @@ class fetchData {
     return request(api.topics, "GET", params);
   }
   static getTopicDetail(id, accessToken) {
-    let accesstoken = accessToken ? accessToken : null;
+    let accesstoken = accessToken ? accessToken : "";
     return request(api.topic + "/" + id, "GET", { accesstoken });
   }
   static userLogin(accesstoken) {
@@ -16,6 +16,9 @@ class fetchData {
     console.log(userName);
 
     return request(api.userInfo + "/" + userName, "GET");
+  }
+  static fetchMessages(accesstoken) {
+    return request(api.msgs, "GET", { accesstoken });
   }
 }
 

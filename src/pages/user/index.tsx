@@ -3,7 +3,7 @@ import Taro, { Component, Config, setNavigationBarColor } from "@tarojs/taro";
 import { View, Text, Image } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import "./index.scss";
-import { userInfo, userLogout } from "../../actions/user";
+import { userInfo, userLogout, getMessages } from "../../actions/user";
 import { AtList, AtListItem, AtButton, AtAccordion } from "taro-ui";
 import ListItem from "../../components/listItem/listItem";
 // #region 书写注意
@@ -19,11 +19,15 @@ import ListItem from "../../components/listItem/listItem";
 type PageStateProps = {
   userData: { [propName: string]: any };
   loginName: string;
+  token: string;
+  hasReadMsgs: any[];
+  notReadMsgs: any[];
 };
 
 type PageDispatchProps = {
   userInfo: (userName: string) => void;
   userLogout: () => void;
+  getMessages: (token: string) => void;
 };
 
 type PageOwnProps = {};
@@ -37,13 +41,22 @@ interface User {
 }
 
 @connect(
-  store => ({ userData: store.user.userData, loginName: store.user.loginName }),
+  store => ({
+    userData: store.user.userData,
+    loginName: store.user.loginName,
+    token: store.user.accessToken,
+    hasReadMsgs: store.user.hasReadMsgs,
+    notReadMsgs: store.user.notReadMsgs
+  }),
   dispatch => ({
     userInfo(userName) {
       dispatch(userInfo(userName));
     },
     userLogout() {
       dispatch(userLogout());
+    },
+    getMessages(token) {
+      dispatch(getMessages(token));
     }
   })
 )
@@ -65,9 +78,10 @@ class User extends Component {
     this.handleUserInfo();
   }
   handleUserInfo() {
-    let { loginName, userInfo } = this.props;
+    let { loginName, userInfo, getMessages, token } = this.props;
     if (loginName) {
       userInfo(loginName);
+      getMessages(token);
     }
   }
   handleLogout() {
@@ -80,8 +94,12 @@ class User extends Component {
       avatar_url,
       loginname,
       recent_replies,
-      recent_topics
+      recent_topics,
+      hasReadMsgs,
+      notReadMsgs
     } = this.props.userData;
+    console.log(hasReadMsgs);
+
     return (
       <View className="user">
         <View className="info">
@@ -100,8 +118,8 @@ class User extends Component {
         </View>
         <ListItem data={recent_topics} title="最新主题" />
         <ListItem data={recent_replies} title="最近回复" />
-        <ListItem data={recent_replies} title="已读消息" />
-        <ListItem data={recent_replies} title="未读消息" />
+        <ListItem data={hasReadMsgs} title="已读消息" />
+        <ListItem data={notReadMsgs} title="未读消息" />
       </View>
     );
   }

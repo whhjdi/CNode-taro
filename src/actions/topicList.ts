@@ -12,12 +12,14 @@ export const getTopicList = params => async dispatch => {
 };
 //获取下一页
 export const getNextList = params => async dispatch => {
-  console.log("next");
-
   try {
     let res = await fetchData.getTopicList(params);
-    if (res.data.length > 0) {
+    console.log(res);
+
+    if (res.data.data.length > 0) {
       dispatch(_getNextList(res.data.data, params.page + 1));
+    } else {
+      console.log("到底了");
     }
   } catch (err) {
     console.log(err);

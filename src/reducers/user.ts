@@ -2,13 +2,16 @@ import {
   ACCESSTOKEN,
   ACCESSTOKENFAILED,
   GETUSERINFO,
-  LOGOUT
+  LOGOUT,
+  GETMESSAGES
 } from "../constants/user";
 
 const USER_STATE = {
   accessToken: "",
   loginName: "",
-  userData: {}
+  userData: {},
+  hasReadMsgs: [],
+  notReadMsgs: []
 };
 
 export default function user(state = USER_STATE, action) {
@@ -25,6 +28,12 @@ export default function user(state = USER_STATE, action) {
       return { ...state, userData: action.userData };
     case LOGOUT:
       return { ...state, userData: {}, accessToken: "", loginName: "" };
+    case GETMESSAGES:
+      return {
+        ...state,
+        hasReadMsgs: action.messages.has_read_messages,
+        notReadMsgs: action.messages.hasnot_read_messages
+      };
     default:
       return state;
   }

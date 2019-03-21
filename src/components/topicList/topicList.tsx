@@ -58,7 +58,7 @@ class TopicList extends Component {
         style="height:100vh;"
       >
         {list.map((item: any) => (
-          <TopicItem item={item} taroKey={item.id} />
+          <TopicItem item={item} taroKey={item.id} key={item.id} />
         ))}
       </ScrollView>
     );

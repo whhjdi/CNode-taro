@@ -1,23 +1,21 @@
-import Taro from "@tarojs/taro";
 import fetchData from "../api/fetchData";
 import {
   ACCESSTOKEN,
   ACCESSTOKENFAILED,
   GETUSERINFO,
-  LOGOUT
+  LOGOUT,
+  GETMESSAGES
 } from "../constants/user";
 
 export const accessUserToken = token => async dispatch => {
-  console.log(token, 333);
-
   try {
     let res = await fetchData.userLogin(token);
-    if (res && res.data.success) {
-      saveAccessToken(token);
+    if (res.data.success) {
       dispatch(_accessUserToken(res.data, token));
     } else {
       dispatch(_accessUserTokenFailed());
     }
+    return res.data;
   } catch (err) {
     console.log(err);
   }
@@ -52,12 +50,24 @@ export const _userInfo = userData => {
   };
 };
 
-export const saveAccessToken = token => {
-  Taro.setStorageSync("token", token);
-};
-
 export const userLogout = () => {
   return {
     type: LOGOUT
+  };
+};
+
+export const getMessages = token => async dispatch => {
+  try {
+    let res = await fetchData.fetchMessages(token);
+    dispatch(_getMessages(res.data.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const _getMessages = messages => {
+  return {
+    type: GETMESSAGES,
+    messages
   };
 };

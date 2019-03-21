@@ -43,6 +43,8 @@ class ListItem extends Component {
   }
   render() {
     let { data, title } = this.props;
+    console.log(data);
+
     let { open } = this.state;
     return (
       <AtAccordion
@@ -51,7 +53,7 @@ class ListItem extends Component {
         title={title}
       >
         <AtList hasBorder={true}>
-          {data.length > 0 ? (
+          {data && data.length > 0 ? (
             data.map(item => {
               return (
                 <View key={item.id}>

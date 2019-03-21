@@ -82,8 +82,11 @@ class Login extends Component {
     }
   }
   async handleLogin() {
-    if (this.state.token) {
-      await this.props.accessUserToken(this.state.token);
+    console.log(this.state.token, 1);
+    let { token } = this.state;
+    if (token) {
+      await this.props.accessUserToken(token);
+      Taro.setStorageSync("token", token);
       Taro.redirectTo({ url: "/pages/user/index" });
     } else {
       Taro.showToast({ title: "请输入accesstoken" });
