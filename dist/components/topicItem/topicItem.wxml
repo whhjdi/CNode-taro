@@ -1,0 +1,25 @@
+<block>
+    <view class="topic-item" bindtap="pushDetail" data-e-tap-so="this" data-e-tap-a-a="{{item}}">
+        <view class="topic-left">
+            <image src="{{item.author.avatar_url}}" class="avatar-img"></image>
+        </view>
+        <view class="topic-right">
+            <view class="right-title">
+                <block>
+                    <block wx:if="{{item.top}}"><text class="right-tab">置顶</text>
+                    </block>
+                    <block wx:else>
+                        <block>
+                            <block wx:if="{{item.tab === 'share'}}"><text class="right-tab right-share">分享</text>
+                            </block>
+                            <block wx:else><text class="right-tab right-ask">问答</text>
+                            </block>
+                        </block>
+                    </block>
+                </block><text class="topic-title">{{item.title}}</text>
+            </view>
+            <view class="right-info"><text class="loginname">{{item.author.loginname}}</text><text class="count">{{item.reply_count}}/ {{item.visit_count}}</text><text class="create-at">{{anonymousState__temp}}</text>
+            </view>
+        </view>
+    </view>
+</block>

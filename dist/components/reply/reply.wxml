@@ -1,0 +1,17 @@
+<block>
+    <view class="reply">
+        <view class="reply-item" wx:key="id" wx:for="{{replies}}" wx:for-item="item" wx:for-index="index">
+            <view class="reply-item-img-wrapper">
+                <image src="{{item.author.avatar_url}}" class="reply-item-avatar"></image>
+            </view>
+            <view class="reply-item-right">
+                <view class="reply-item-content"><text class="reply-item-loginname">{{item.author.loginname}}<text class="floor">{{index + 1}}楼</text></text>
+                    <rich-text nodes="{{item.content}}"></rich-text>
+                </view>
+                <view class="star">
+                    <at-icon value="{{item.is_uped ? 'star-2' : 'star'}}" __triggerObserer="{{ _triggerObserer }}" size="16" color="#e67e22"></at-icon><text class="star-text">{{item.ups.length ? item.ups.length : 0}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>

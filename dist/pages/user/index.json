@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "at-button": "../../npm/taro-ui/dist/weapp/components/button/index",
+    "list-item": "../../components/listItem/listItem"
+  },
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

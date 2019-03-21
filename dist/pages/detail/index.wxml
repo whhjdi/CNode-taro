@@ -1,0 +1,6 @@
+<block>
+    <view class="detail">
+        <detail-info detailInfo="{{detailInfo}}" __triggerObserer="{{ _triggerObserer }}"></detail-info>
+        <reply replies="{{replies}}" __triggerObserer="{{ _triggerObserer }}"></reply>
+    </view>
+</block>

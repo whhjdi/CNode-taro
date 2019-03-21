@@ -1,0 +1,55 @@
+
+.detailInfo {
+  font-size: 24rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%; }
+  .detailInfo .detail-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 20PX;
+    font-size: 36rpx;
+    padding: 10rpx 20rpx; }
+    .detailInfo .detail-header .detail-header-title .right-tab {
+      background: #e74c3c;
+      font-size: 30rpx;
+      height: 30rpx;
+      line-height: 30rpx;
+      padding: 4rpx 6rpx;
+      color: #fff;
+      border-radius: 4rpx;
+      margin-right: 10rpx;
+      min-width: 60rpx;
+      text-align: center; }
+      .detailInfo .detail-header .detail-header-title .right-tab.right-share {
+        background: #2ecc71; }
+      .detailInfo .detail-header .detail-header-title .right-tab.right-ask {
+        background: #9b59b6; }
+    .detailInfo .detail-header .detail-header-desc {
+      font-size: 26rpx;
+      color: #bdc3c7; }
+  .detailInfo .detail-body {
+    font-size: 28rpx;
+    padding: 10rpx 20rpx; }

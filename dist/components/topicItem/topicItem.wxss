@@ -1,0 +1,75 @@
+
+.topic-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: space-between;
+  -webkit-align-items: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  padding: 10rpx 20rpx;
+  border-bottom: 1rpx solid #ddd; }
+  .topic-item .topic-left {
+    width: 80rpx;
+    margin-right: 20rpx; }
+    .topic-item .topic-left .avatar-img {
+      width: 80rpx;
+      height: 80rpx;
+      border-radius: 4rpx; }
+  .topic-item .topic-right {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+    .topic-item .topic-right .right-title {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+      .topic-item .topic-right .right-title .topic-title {
+        font-size: 30rpx;
+        color: #2e3c5d; }
+      .topic-item .topic-right .right-title .right-tab {
+        background: #e74c3c;
+        font-size: 20rpx;
+        height: 30rpx;
+        line-height: 30rpx;
+        padding: 4rpx 6rpx;
+        color: #fff;
+        border-radius: 4rpx;
+        margin-right: 10rpx;
+        min-width: 60rpx;
+        text-align: center; }
+        .topic-item .topic-right .right-title .right-tab.right-share {
+          background: #2ecc71; }
+        .topic-item .topic-right .right-title .right-tab.right-ask {
+          background: #9b59b6; }
+    .topic-item .topic-right .right-info {
+      font-size: 24rpx;
+      color: #bdc3c7; }
+      .topic-item .topic-right .right-info .loginname {
+        margin-right: 20rpx; }
+      .topic-item .topic-right .right-info .count {
+        margin-right: 20rpx; }

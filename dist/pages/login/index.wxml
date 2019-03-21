@@ -1,0 +1,11 @@
+<block>
+    <view class="login">
+        <view class="header">
+            <view class="header-avatar">快点登录吧</view>
+        </view>
+        <view class="input-wrapper">
+            <input type="password" password="{{true}}" placeholder="请输入accesstoken" focus="{{true}}" class="login-input" bindinput="handleInput" data-e-input-so="this" />
+        </view>
+        <at-button type="primary" __triggerObserer="{{ _triggerObserer }}" circle="{{true}}" className="login-button" bindonclick="handleLogin" __fn_onClick="{{true}}" data-e-onclick-so="this">登录</at-button>
+    </view>
+</block>

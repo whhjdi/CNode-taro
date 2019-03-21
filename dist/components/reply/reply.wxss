@@ -1,0 +1,79 @@
+
+.reply .reply-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-bottom: 1rpx solid #ddd;
+  padding: 20rpx;
+  font-size: 28rpx; }
+  .reply .reply-item .reply-item-img-wrapper {
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx; }
+    .reply .reply-item .reply-item-img-wrapper .reply-item-avatar {
+      width: 80rpx;
+      height: 80rpx;
+      border-radius: 50%; }
+  .reply .reply-item .reply-item-right {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .reply .reply-item .reply-item-right .reply-item-content {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      color: #1b1b1b;
+      margin-bottom: 10rpx; }
+      .reply .reply-item .reply-item-right .reply-item-content .reply-item-loginname {
+        color: #bdc3c7; }
+        .reply .reply-item .reply-item-right .reply-item-content .reply-item-loginname .floor {
+          margin-left: 20rpx; }
+    .reply .reply-item .reply-item-right .star {
+      margin-left: 10rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: nowrap;
+          -ms-flex-wrap: nowrap;
+              flex-wrap: nowrap;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      min-width: 50rpx; }
+      .reply .reply-item .reply-item-right .star .star-text {
+        padding-top: 4rpx;
+        margin-left: 6rpx; }

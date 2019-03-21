@@ -1,0 +1,23 @@
+
+.login .header {
+  width: 100%;
+  height: 300rpx;
+  background: #5685E4;
+  position: relative;
+  text-align: center;
+  line-height: 300rpx; }
+  .login .header .header-avatar {
+    color: #fff; }
+
+.login .input-wrapper {
+  padding: 20rpx; }
+  .login .input-wrapper .login-input {
+    width: 80%;
+    border-bottom: 2PX solid #000;
+    margin: 0 auto;
+    padding: 10rpx;
+    text-align: center; }
+
+.login .login-button {
+  width: 90%;
+  margin: 0 auto; }
